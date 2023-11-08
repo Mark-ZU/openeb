@@ -34,6 +34,7 @@ void initialize_plugin(void *plugin_ptr) {
     tz_cam_discovery->add_usb_id(0x03fd, 0x5832, 0x0);
     tz_cam_discovery->add_usb_id(0x04b4, 0x00f4, 0x19);
     tz_cam_discovery->add_usb_id(0x04b4, 0x00f5, 0x19);
+    tz_cam_discovery->add_usb_id(0x04b4, 0x00c4, 0x19);
 
     // Register live camera discoveries
     auto &fx3_disc = plugin.add_camera_discovery(std::make_unique<Fx3CameraDiscovery>());

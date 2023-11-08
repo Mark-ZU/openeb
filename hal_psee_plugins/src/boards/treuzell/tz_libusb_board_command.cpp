@@ -151,7 +151,7 @@ TzLibUSBBoardCommand::TzLibUSBBoardCommand(std::shared_ptr<LibUSBContext> ctx, l
 
     // Add a warning if using an Evk3/4 with a too old firmware
     static std::unordered_set<std::string> outdated_fw_warning_map;
-    if ((desc.idVendor == 0x04b4) && ((desc.idProduct == 0x00f4) || (desc.idProduct == 0x00f5))) {
+    if ((desc.idVendor == 0x04b4) && ((desc.idProduct == 0x00f4) || (desc.idProduct == 0x00c4) || (desc.idProduct == 0x00f5))) {
         if (version < 0x30800) {
             const std::string &serial = get_serial();
             if (outdated_fw_warning_map.count(serial) == 0) {
@@ -364,7 +364,7 @@ void TzLibUSBBoardCommand::select_board_quirks(libusb_device_descriptor &desc) {
 
 void TzLibUSBBoardCommand::select_early_quirks(libusb_device_descriptor &desc) {
     // Evk3/4
-    if ((desc.idVendor == 0x04b4) && ((desc.idProduct == 0x00f4) || (desc.idProduct == 0x00f5))) {
+    if ((desc.idVendor == 0x04b4) && ((desc.idProduct == 0x00f4) || (desc.idProduct == 0x00c4) || (desc.idProduct == 0x00f5))) {
         if (desc.bcdDevice < 0x0307)
             quirks.do_not_set_config = true;
     }

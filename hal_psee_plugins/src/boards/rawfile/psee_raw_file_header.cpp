@@ -205,6 +205,7 @@ void PseeRawFileHeader::check_header() {
         {SYSTEM_EVK3_GEN41, {{4, 1, "Gen4.1"}, StreamFormat("EVT3;height=720;width=1280")}},
         {SYSTEM_EVK2_IMX636, {{4, 2, "IMX636"}, StreamFormat("EVT3;height=720;width=1280")}},
         {SYSTEM_EVK3_IMX636, {{4, 2, "IMX636"}, StreamFormat("EVT3;height=720;width=1280")}},
+        {SYSTEM_EVK3_IMX646, {{4, 2, "IMX646"}, StreamFormat("EVT3;height=720;width=1280")}},
     };
     long system_id = get_system_id();
     auto info      = system_id_map.find(system_id);

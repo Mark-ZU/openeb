@@ -168,7 +168,8 @@ int main(int argc, char *argv[]) {
         {"CYBOOT", std::make_pair(0x04b4, 0x00f3)},
         {"CYFLASH", std::make_pair(0x04b4, 0x4720)},
         {"EVK3", std::make_pair(0x04b4, 0x00f4)},
-        {"EVK4", std::make_pair(0x04b4, 0x00f5)}};
+        {"EVK4", std::make_pair(0x04b4, 0x00f5)},
+        {"SENSING_USB3_EVS_CAMERA", std::make_pair(0x04b4, 0x00c4)}};
     libusb_context *ctx = NULL; // a libusb session
     int r;                      // for return values
     ssize_t cnt;                // holding number of devices in list
@@ -307,7 +308,7 @@ int main(int argc, char *argv[]) {
         }
         MV_LOG_INFO() << "Writing serial" << serial_string;
 
-        if (sys_id == Metavision::SystemId::SYSTEM_EVK3_GEN41 || sys_id == Metavision::SystemId::SYSTEM_EVK3_IMX636) {
+        if (sys_id == Metavision::SystemId::SYSTEM_EVK3_GEN41 || sys_id == Metavision::SystemId::SYSTEM_EVK3_IMX636 || sys_id == Metavision::SystemId::SYSTEM_EVK3_IMX646) {
             MV_LOG_INFO() << Metavision::Log::no_space << "Using EEPROM address 0x" << std::hex
                           << (eeprom_dev_addr & 0xFF) << " (CCam5 " << ccam5_board << ")";
             I2cEeprom eeprom_handler(eeprom_dev_addr);
@@ -328,7 +329,7 @@ int main(int argc, char *argv[]) {
             return 1;
         }
     } else if (serial_read) {
-        if (sys_id == Metavision::SystemId::SYSTEM_EVK3_GEN41 || sys_id == Metavision::SystemId::SYSTEM_EVK3_IMX636) {
+        if (sys_id == Metavision::SystemId::SYSTEM_EVK3_GEN41 || sys_id == Metavision::SystemId::SYSTEM_EVK3_IMX636 || sys_id == Metavision::SystemId::SYSTEM_EVK3_IMX646) {
             MV_LOG_INFO() << Metavision::Log::no_space << "Using EEPROM address 0x" << std::hex
                           << (eeprom_dev_addr & 0xFF) << " (CCam5 " << ccam5_board << ")";
             I2cEeprom eeprom_handler(eeprom_dev_addr);

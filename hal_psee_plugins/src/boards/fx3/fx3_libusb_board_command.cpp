@@ -411,7 +411,7 @@ void Fx3LibUSBBoardCommand::get_ccam2_with_serial(std::shared_ptr<LibUSBContext>
             return;
         }
         if ((desc.idVendor == 0x04b4) &&
-            ((desc.idProduct == 0x00f1) || (desc.idProduct == 0x00f4) || (desc.idProduct == 0x00bc))) {
+            ((desc.idProduct == 0x00f1) || (desc.idProduct == 0x00f4) || (desc.idProduct == 0x00c4) || (desc.idProduct == 0x00bc))) {
             try {
                 dev_handle = std::make_shared<LibUSBDevice>(libusb_ctx, devs[i]);
             } catch (const std::system_error &e) {
@@ -611,7 +611,7 @@ void Fx3LibUSBBoardCommand::get_all_serial(std::shared_ptr<LibUSBContext> libusb
             return;
         }
         if ((desc.idVendor == 0x04b4) &&
-            ((desc.idProduct == 0x00f1) || (desc.idProduct == 0x00f4) || (desc.idProduct == 0x00bc))) {
+            ((desc.idProduct == 0x00f1) || (desc.idProduct == 0x00f4) || (desc.idProduct == 0x00c4) || (desc.idProduct == 0x00bc))) {
             std::shared_ptr<LibUSBDevice> dev_handle;
             try {
                 dev_handle = std::make_shared<LibUSBDevice>(libusb_ctx, devs[i]);
